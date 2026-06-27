@@ -5,14 +5,31 @@ dist/
 
 # Backup files
 *.bak
+*~
 
 # Database
 *.db
 *.sqlite
+*.sqlite3
 
 # OS
 Thumbs.db
 .DS_Store
+Desktop.ini
 
 # Logs
 *.log
+
+# IDE
+*.swp
+*.swo
+*~
+
+# Compiled files
+*.class
+*.jar
+!lib/*.jar
+!dist/lib/*.jar
+
+# JSON data (local data, bukan konfigurasi)
+barang_lines_1.json
