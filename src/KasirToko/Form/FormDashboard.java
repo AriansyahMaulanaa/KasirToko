@@ -1,0 +1,180 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
+package KasirToko.Form;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import javax.swing.JFrame;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+/**
+ *
+ * @author Ariansyah
+ */
+public class FormDashboard extends javax.swing.JFrame {
+    
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormDashboard.class.getName());
+
+    /**
+     * Creates new form FormDashboard
+     */
+    public FormDashboard() {
+        initComponents();
+        buatTampilan();
+    }
+
+    private JPanel halamanPanel;
+    private PanelTransaksi panelTransaksi;
+    private JLabel lblSubjudul;
+
+    private void buatTampilan() {
+        setTitle("Dashboard Kasir Toko");
+        setSize(980, 690);
+        setLocationRelativeTo(null);
+
+        JButton btnTransaksi = UiStyle.button("Transaksi");
+        JButton btnBarang = UiStyle.button("Data Barang");
+        JButton btnKategori = UiStyle.button("Kategori");
+        JButton btnPelanggan = UiStyle.button("Pelanggan");
+        JButton btnSupplier = UiStyle.button("Supplier");
+        JButton btnLaporan = UiStyle.button("Laporan");
+
+        JPanel menuAtas = new JPanel(new FlowLayout(FlowLayout.LEFT, 8, 8));
+        menuAtas.setBackground(new Color(220, 220, 220));
+        menuAtas.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, UiStyle.LINE));
+        menuAtas.add(btnTransaksi);
+        menuAtas.add(btnBarang);
+        menuAtas.add(btnKategori);
+        menuAtas.add(btnPelanggan);
+        menuAtas.add(btnSupplier);
+        menuAtas.add(btnLaporan);
+
+        JPanel atas = new JPanel(new BorderLayout());
+        atas.add(headerUtama(), BorderLayout.NORTH);
+        atas.add(menuAtas, BorderLayout.CENTER);
+
+        panelTransaksi = new PanelTransaksi(false);
+        halamanPanel = new JPanel(new BorderLayout());
+
+        getContentPane().removeAll();
+        getContentPane().setLayout(new BorderLayout());
+        getContentPane().add(atas, BorderLayout.NORTH);
+        getContentPane().add(halamanPanel, BorderLayout.CENTER);
+
+        btnTransaksi.addActionListener(e -> tampilkanHalaman("Transaksi Penjualan", panelTransaksi));
+        btnBarang.addActionListener(e -> tampilkanHalaman("Data Barang", panelDariFrame(new FormBarang())));
+        btnKategori.addActionListener(e -> tampilkanHalaman("Data Kategori", panelDariFrame(new FormKategori())));
+        btnPelanggan.addActionListener(e -> tampilkanHalaman("Data Pelanggan", panelDariFrame(new FormPelanggan())));
+        btnSupplier.addActionListener(e -> tampilkanHalaman("Data Supplier", panelDariFrame(new FormSupplier())));
+        btnLaporan.addActionListener(e -> tampilkanHalaman("Laporan Transaksi", panelDariFrame(new FormLaporan())));
+        tampilkanHalaman("Transaksi Penjualan", panelTransaksi);
+    }
+
+    private JPanel headerUtama() {
+        JPanel panel = new JPanel(new BorderLayout(8, 2));
+        panel.setBackground(UiStyle.HEADER);
+        panel.setBorder(UiStyle.padding(12, 18, 12, 18));
+
+        JLabel lblJudul = new JLabel("Kasir Toko");
+        lblJudul.setForeground(Color.WHITE);
+        lblJudul.setFont(lblJudul.getFont().deriveFont(Font.BOLD, 18f));
+
+        lblSubjudul = new JLabel("Transaksi Penjualan");
+        lblSubjudul.setForeground(new Color(230, 230, 230));
+        lblSubjudul.setFont(lblSubjudul.getFont().deriveFont(12f));
+
+        panel.add(lblJudul, BorderLayout.NORTH);
+        panel.add(lblSubjudul, BorderLayout.SOUTH);
+        return panel;
+    }
+
+    private void tampilkanHalaman(String subjudul, Component halaman) {
+        lblSubjudul.setText(subjudul);
+        halamanPanel.removeAll();
+        halamanPanel.add(halaman, BorderLayout.CENTER);
+        halamanPanel.revalidate();
+        halamanPanel.repaint();
+    }
+
+    private JPanel panelDariFrame(JFrame frame) {
+        JPanel panel = new JPanel(new BorderLayout());
+        Container content = frame.getContentPane();
+        Component[] components = content.getComponents();
+
+        for (Component component : components) {
+            Object constraints = null;
+            if (content.getLayout() instanceof BorderLayout borderLayout) {
+                constraints = borderLayout.getConstraints(component);
+            }
+            if (BorderLayout.NORTH.equals(constraints)) {
+                continue;
+            }
+            content.remove(component);
+            panel.add(component, constraints);
+        }
+
+        frame.dispose();
+        return panel;
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
+            logger.log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(() -> new FormDashboard().setVisible(true));
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // End of variables declaration//GEN-END:variables
+}

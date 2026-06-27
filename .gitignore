@@ -1,0 +1,18 @@
+# NetBeans
+nbproject/private/
+build/
+dist/
+
+# Backup files
+*.bak
+
+# Database
+*.db
+*.sqlite
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Logs
+*.log
