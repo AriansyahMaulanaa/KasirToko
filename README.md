@@ -1,7 +1,6 @@
 # 🧾 KasirToko — Aplikasi Kasir Berbasis Java Desktop
 
-**Tugas Akhir Mata Kuliah Pemrograman II**  
-Dosen Pengampu: *[isi nama dosen]*  
+**Tugas Akhir Mata Kuliah Pemrograman II**   
 Disusun oleh: **Ariansyah Maulana**
 
 ---
