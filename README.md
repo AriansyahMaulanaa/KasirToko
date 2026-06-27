@@ -74,20 +74,12 @@ KasirToko/
 4. **Buka di NetBeans**
    - File → Open Project → Pilih folder `KasirToko`
    - Jalankan (F6 / Run)
-
----
-
-## 📸 Tampilan Aplikasi
-
-> *(Screenshot bisa ditambahkan di sini)*
-
----
-
+   - 
 ## 📄 Lisensi
 
 Proyek ini dibuat untuk keperluan akademik. Silakan digunakan sebagai referensi pembelajaran.
 
 ---
 
-> **Universitas** — *[isi nama universitas]*  
+> **Universitas** — Universitas Pamulang  
 > **Fakultas Ilmu Komputer** — *Program Studi Ilmu Komputer*
